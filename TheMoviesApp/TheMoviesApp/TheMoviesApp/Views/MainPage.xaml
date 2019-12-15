@@ -16,7 +16,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:MoviesPage />
+                <views:SearchPage />
             </x:Arguments>
         </NavigationPage>
         

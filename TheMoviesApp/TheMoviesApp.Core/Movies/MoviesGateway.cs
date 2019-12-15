@@ -49,6 +49,7 @@ namespace TheMoviesApp.Core.Movies
         {
             var serialized = await GetAsync(method);
             var searchResult = JsonConvert.DeserializeObject<MovieSearch>(serialized);
+            
             return searchResult.Search;
         }
 

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TheMoviesApp.Views.SearchPage">
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackLayout>
+                <Label Text="Add Movie to list"
+                HorizontalOptions="StartAndExpand" />
+                <Entry HorizontalOptions="FillAndExpand"/>
+                <Button Text="Search"/>
+            </StackLayout>
+            <ListView Grid.Row="1" ItemsSource="{Binding MovieCollection}" SeparatorVisibility="Default" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.3*"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" BackgroundColor="Black">
+                                    <!--cant load images from url bindined-->
+                                    <Image VerticalOptions="Center">
+                                        <Image.Source>
+                                            <UriImageSource 
+                                                Uri="{Binding PosterUrl}"
+                                                CacheValidity="14" 
+			                                    CachingEnabled="true"/>
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Title"/>
+                                    <Label Text="{Binding Title}"/>
+                                    <Label Text="Year"/>
+                                    <Label Text="{Binding Year}"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>        
+               
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

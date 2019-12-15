@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TheMoviesApp.Core.Movies;
 
 namespace TheMoviesApp.ViewModels
@@ -31,7 +32,15 @@ namespace TheMoviesApp.ViewModels
         }
         public async void InitMovies()
         {
-            MovieCollection = await movieService.GetMoviesAsync();
+            var movieCollection = await movieService.GetMoviesAsync();
+            if (movieCollection.Any())
+            {
+                MovieCollection = movieCollection;
+            }
+            else
+            {
+                MovieCollection = new List<Movie>();
+            }
         }
     }
 }
