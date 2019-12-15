@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace TheMoviesApp.Core.Movies
@@ -30,7 +29,7 @@ namespace TheMoviesApp.Core.Movies
             httpClient.BaseAddress = new Uri(options.BaseUrl);
         }
 
-        public Task<IEnumerable<Movie>> GetMoviesAsync(string title = "star")
+        public Task<IEnumerable<SearchedMovie>> SearchMovieByTitle(string title = "star")
         {
             string method = string.Format(TITLE_SEARCH_TEMPLATE, title, options.ApiKey);
             string msg = $"[{this.GetType().Name}] getting movies at {options.BaseUrl}{method}";
@@ -45,10 +44,10 @@ namespace TheMoviesApp.Core.Movies
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
-        public async Task<IEnumerable<Movie>> GetMoviesDeserializedAsync(string method)
+        public async Task<IEnumerable<SearchedMovie>> GetMoviesDeserializedAsync(string method)
         {
             var serialized = await GetAsync(method);
-            var searchResult = JsonConvert.DeserializeObject<MovieSearch>(serialized);
+            var searchResult = JsonConvert.DeserializeObject<MovieSearchResponse>(serialized);
             
             return searchResult.Search;
         }

@@ -10,14 +10,9 @@ namespace TheMoviesApp.Views
     {
         public SearchPage()
         {
-            BindingContext = Startup.ServiceProvider.GetService<MoviesViewModel>();
+            BindingContext = Startup.ServiceProvider.GetService<SearchViewModel>();
             InitializeComponent();
             
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            ((MoviesViewModel)BindingContext).DoIt();
         }
     }
 }

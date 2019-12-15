@@ -15,7 +15,8 @@ namespace TheMoviesApp.Views
         public MoviesPage()
         {
             InitializeComponent();
-            BindingContext = Startup.ServiceProvider.GetService<MoviesViewModel>();
+            MoviesViewModel vm = Startup.ServiceProvider.GetService<MoviesViewModel>();
+            BindingContext = vm;
         }
         protected override void OnAppearing()
         {

@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Title="Search"
              x:Class="TheMoviesApp.Views.SearchPage">
     
     <ContentPage.Content>
@@ -15,8 +16,16 @@
             <StackLayout>
                 <Label Text="Add Movie to list"
                 HorizontalOptions="StartAndExpand" />
-                <Entry HorizontalOptions="FillAndExpand"/>
-                <Button Text="Search"/>
+                <Entry Text="{Binding SearchingTitle}" HorizontalOptions="FillAndExpand"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Search" Command="{Binding SeachCommand}"/>
+                    <Button Grid.Column="1" Text="Cancel" Command="{Binding BackCommand}"/>
+                </Grid>
+                
             </StackLayout>
             <ListView Grid.Row="1" ItemsSource="{Binding MovieCollection}" SeparatorVisibility="Default" HasUnevenRows="True">
                 <ListView.ItemTemplate>

@@ -19,9 +19,9 @@ namespace TheMoviesApp.Core.Movies
             logger.LogCritical($"You just called DoStuff from {this.GetType().Name}");
         }
 
-        public Task<IEnumerable<Movie>> GetMoviesAsync()
+        public Task<IEnumerable<SearchedMovie>> SearchMovieByTitle(string title = "star")
         {
-            return gateway.GetMoviesAsync();
+            return gateway.SearchMovieByTitle(title);
         }
     }
 }

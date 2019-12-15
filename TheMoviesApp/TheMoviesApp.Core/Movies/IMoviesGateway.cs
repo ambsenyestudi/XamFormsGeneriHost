@@ -5,6 +5,6 @@ namespace TheMoviesApp.Core.Movies
 {
     public interface IMoviesGateway
     {
-        Task<IEnumerable<Movie>> GetMoviesAsync(string title = "star");
+        Task<IEnumerable<SearchedMovie>> SearchMovieByTitle(string title = "star");
     }
 }

@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using TheMoviesApp.Core;
 using TheMoviesApp.Core.Movies;
+using TheMoviesApp.Services;
 using TheMoviesApp.ViewModels;
 
 namespace TheMoviesApp
@@ -16,7 +18,7 @@ namespace TheMoviesApp
         {
             services.AddGateways(configuration)
                 .AddServices()
-                .addViewModels();
+                .AddViewModels();
         }
         public static IServiceCollection AddGateways(this IServiceCollection services, IConfiguration configuration)
         {
@@ -28,12 +30,14 @@ namespace TheMoviesApp
         }
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
+            services.AddSingleton<INavigationService, NavigationService>();
             services.AddSingleton<IMoviesService, MoviesService>();
             return services;
         }
-        public static IServiceCollection addViewModels(this IServiceCollection services)
+        public static IServiceCollection AddViewModels(this IServiceCollection services)
         {
             services.AddTransient<MoviesViewModel>();
+            services.AddTransient<SearchViewModel>();
             return services;
         }
         public static void ExtractSaveResource(string filename, string location)
