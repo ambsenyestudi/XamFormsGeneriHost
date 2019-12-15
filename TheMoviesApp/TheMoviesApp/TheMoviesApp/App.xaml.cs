@@ -12,6 +12,7 @@ namespace TheMoviesApp
         public App()
         {
             InitializeComponent();
+            Startup.Init();
 
             DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();

@@ -5,6 +5,7 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
             xmlns:views="clr-namespace:TheMoviesApp.Views"
+            Title="Movies App"
             x:Class="TheMoviesApp.Views.MainPage">
 
     <TabbedPage.Children>
@@ -15,7 +16,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:ItemsPage />
+                <views:MoviesPage />
             </x:Arguments>
         </NavigationPage>
         
